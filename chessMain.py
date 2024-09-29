@@ -46,7 +46,7 @@ def main():
 def drawGameState(screen, gs):
     drawBoard(screen)  #draw squares on the board
     #add in piece highlighting or move suggestion later
-    # drawPieces(screen, gs.board)  #draw pieces on top of those squares  
+    drawPieces(screen, gs.board)  #draw pieces on top of those squares  
 
 """
 Draw squares on the board. The top left square is always light
@@ -62,7 +62,12 @@ def drawBoard(screen):
 """
 Draw pieces on the squares of the board using the current GameState's board variable 
 """
-# def drawPieces(screen, board):
+def drawPieces(screen, board):
+    for r in range(DIMENSION):
+        for c in range(DIMENSION):
+            piece = board[r][c]
+            if(piece != "--"): #not an empty square
+                screen.blit(IMAGES[piece], p.Rect(c*SQ_SIZE, r*SQ_SIZE, SQ_SIZE, SQ_SIZE))
 
 if __name__ == "__main__":
     main()
